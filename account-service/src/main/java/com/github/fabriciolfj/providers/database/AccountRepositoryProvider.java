@@ -44,11 +44,12 @@ public class AccountRepositoryProvider implements CreateAccount, ListAccounts, F
     }
 
     private Uni<List<AccountData>> listAll() {
-        return AccountData.listAll(Sort.by("dataMov"));
+        return AccountData
+                .list("Select e From AccountData e join fetch e.extractData order by e.dataMov");
     }
 
     private Uni<AccountData> find(String code) {
-        return AccountData.find("Select e From AccountData e where e.code =?1", code)
+        return AccountData.find("Select e From AccountData e join fetch e.extractData where e.code =?1", code)
                 .firstResult();
     }
 }

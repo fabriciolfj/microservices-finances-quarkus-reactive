@@ -6,11 +6,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -26,4 +25,6 @@ public class AccountData extends PanacheEntity{
     private BigDecimal balance;
     @Column(name = "dataMov", columnDefinition = "TIMESTAMP")
     private LocalDateTime dataMov;
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "accountData")
+    private List<ExtractData> extractData;
 }

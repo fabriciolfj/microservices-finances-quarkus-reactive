@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Builder
 @Data
@@ -17,4 +18,5 @@ public class AccountGetResponse {
     private String code;
     private BigDecimal balance;
     private LocalDateTime dataMov;
+    private List<ExtractGetResponse> extracts;
 }
