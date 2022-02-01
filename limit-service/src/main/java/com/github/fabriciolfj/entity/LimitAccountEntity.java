@@ -11,8 +11,9 @@ import java.math.BigDecimal;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class LimitEntity {
+public class LimitAccountEntity {
 
+    private String account;
     private Integer withdrawalAmount;
     private BigDecimal rate;
 }
