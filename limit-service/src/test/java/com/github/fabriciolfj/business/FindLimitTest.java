@@ -25,4 +25,12 @@ public class FindLimitTest {
         assertTrue(limitAccountEntity.getRate().compareTo(BigDecimal.valueOf(0.9)) == 0);
         assertTrue(limitAccountEntity.getWithdrawalAmount().compareTo(20) == 0);
     }
+
+    @Test
+    void testFindLimitBasic() {
+        final LimitAccountEntity limitAccountEntity = findLimit.execute(UUID.randomUUID().toString(), BigDecimal.valueOf(1800));
+
+        assertTrue(limitAccountEntity.getRate().compareTo(BigDecimal.valueOf(3.4)) == 0);
+        assertTrue(limitAccountEntity.getWithdrawalAmount().compareTo(10) == 0);
+    }
 }

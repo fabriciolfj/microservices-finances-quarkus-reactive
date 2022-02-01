@@ -1,4 +1,4 @@
-package com.github.fabriciolfj.business;
+package com.github.fabriciolfj.business.select;
 
 import com.github.fabriciolfj.entity.LimitEntity;
 

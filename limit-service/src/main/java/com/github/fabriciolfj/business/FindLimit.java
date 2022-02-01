@@ -1,5 +1,6 @@
 package com.github.fabriciolfj.business;
 
+import com.github.fabriciolfj.business.select.PremiumLimit;
 import com.github.fabriciolfj.entity.LimitAccountEntity;
 import com.github.fabriciolfj.entity.LimitEntity;
 

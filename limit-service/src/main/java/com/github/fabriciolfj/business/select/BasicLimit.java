@@ -1,26 +1,26 @@
-package com.github.fabriciolfj.business;
+package com.github.fabriciolfj.business.select;
 
 import com.github.fabriciolfj.entity.LimitEntity;
 
 import java.math.BigDecimal;
 
-public class PremiumLimit extends SelectLimit{
+public class BasicLimit extends SelectLimit {
 
     @Override
     protected BigDecimal addValue() {
-        return this.value = BigDecimal.valueOf(2000);
+        return this.value = BigDecimal.valueOf(1000);
     }
 
     @Override
     protected LimitEntity next(final BigDecimal balance) {
-        return new BasicLimit()
+        return new DefaultLimit()
                 .execute(balance);
     }
 
     @Override
     protected LimitEntity createLimity() {
         return LimitEntity.builder()
-                .rate(BigDecimal.valueOf(0.9))
-                .withdrawalAmount(20).build();
+                .rate(BigDecimal.valueOf(3.4))
+                .withdrawalAmount(10).build();
     }
 }
