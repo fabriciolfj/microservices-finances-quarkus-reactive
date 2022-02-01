@@ -4,7 +4,7 @@ import com.github.fabriciolfj.entity.LimitEntity;
 
 import java.math.BigDecimal;
 
-public class PremiumLimit extends SelectLimit{
+public class PremiumLimit extends SelectLimit {
 
     @Override
     protected BigDecimal addValue() {
