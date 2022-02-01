@@ -13,10 +13,22 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountEntity {
+public class AccountEntity implements CommandEntity {
 
     private String code;
     private BigDecimal balance;
     private LocalDateTime dateMov;
     private List<ExtractEntity> extracts;
+    private StatusEntity statusEntity;
+
+    @Override
+    public StatusEntity findStatus() {
+        return statusEntity;
+    }
+
+    @Override
+    public CommandEntity updateStatus(final StatusEntity statusEntity) {
+        this.statusEntity = statusEntity;
+        return this;
+    }
 }
