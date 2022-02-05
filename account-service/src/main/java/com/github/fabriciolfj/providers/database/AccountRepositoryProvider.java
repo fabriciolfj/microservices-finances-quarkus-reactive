@@ -7,14 +7,10 @@ import com.github.fabriciolfj.entities.AccountEntity;
 import com.github.fabriciolfj.providers.database.converter.AccountDataConverter;
 import com.github.fabriciolfj.providers.database.model.AccountData;
 import io.quarkus.hibernate.reactive.panache.Panache;
-import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
-import io.quarkus.hibernate.reactive.panache.PanacheQuery;
-import io.quarkus.panache.common.Sort;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 
 import javax.enterprise.context.ApplicationScoped;
-import java.time.Duration;
 import java.util.List;
 
 @ApplicationScoped
