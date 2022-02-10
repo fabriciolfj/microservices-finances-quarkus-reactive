@@ -5,5 +5,5 @@ import io.smallrye.mutiny.Uni;
 
 public interface CreateAccount {
 
-    Uni<String> execute(final AccountEntity accountEntity);
+    Uni<AccountEntity> execute(final AccountEntity accountEntity);
 }

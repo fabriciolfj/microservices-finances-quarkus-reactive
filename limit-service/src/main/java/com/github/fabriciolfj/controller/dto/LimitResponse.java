@@ -1,5 +1,6 @@
-package com.github.fabriciolfj.entity;
+package com.github.fabriciolfj.controller.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,12 +10,13 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class LimitAccountEntity {
+@AllArgsConstructor
+@Builder
+public class LimitResponse {
 
     private String account;
+    @JsonProperty("withdrawal_amount")
     private Integer withdrawalAmount;
     private BigDecimal rate;
     private LocalDateTime dataMov;

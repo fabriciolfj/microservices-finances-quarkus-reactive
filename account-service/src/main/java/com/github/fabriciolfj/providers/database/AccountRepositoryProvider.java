@@ -17,12 +17,15 @@ import java.util.List;
 public class AccountRepositoryProvider implements CreateAccount, ListAccounts, FindByCodeAccount {
 
     @Override
-    public Uni<String> execute(final AccountEntity accountEntity) {
+    public Uni<AccountEntity> execute(final AccountEntity accountEntity) {
         return Uni.createFrom().item(accountEntity)
                 .onItem().transform(entity -> AccountDataConverter.toData(accountEntity))
                 .flatMap(data -> Panache.withTransaction(data::persist))
                 .onItem()
-                .transform(value -> ((AccountData) value).getCode());
+                .transform(value -> {
+                    var data = ((AccountData) value);
+                    return AccountDataConverter.toEntity(data);
+                });
     }
 
     @Override

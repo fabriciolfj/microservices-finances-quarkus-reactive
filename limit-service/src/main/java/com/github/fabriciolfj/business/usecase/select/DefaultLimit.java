@@ -1,4 +1,4 @@
-package com.github.fabriciolfj.business.select;
+package com.github.fabriciolfj.business.usecase.select;
 
 import com.github.fabriciolfj.entity.LimitEntity;
 

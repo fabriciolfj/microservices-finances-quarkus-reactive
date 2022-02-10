@@ -1,5 +1,7 @@
 package com.github.fabriciolfj.business;
 
+import com.github.fabriciolfj.business.usecase.CreateLimit;
+import com.github.fabriciolfj.business.usecase.FindLimit;
 import com.github.fabriciolfj.entity.LimitAccountEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
