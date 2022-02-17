@@ -42,6 +42,12 @@ public class AccountRepositoryProvider implements CreateAccount, ListAccounts, F
 
     }
 
+    public Uni<AccountData> findDataByCode(final String code) {
+        return find(code)
+                .onItem().ifNull().failWith(new RuntimeException("Account not found : " + code));
+
+    }
+
     private Uni<List<AccountData>> listAll() {
         return AccountData
                 .list("Select e From AccountData e join fetch e.extractData order by e.dataMov");

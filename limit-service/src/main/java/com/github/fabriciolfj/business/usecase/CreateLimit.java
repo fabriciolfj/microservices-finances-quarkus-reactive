@@ -15,12 +15,14 @@ public class CreateLimit {
 
     private final LimitSave limitSave;
     private final FindLimit findLimit;
+    private final SetLimitCache setLimitCache;
 
     public LimitAccountEntity execute(final String account, final BigDecimal balance) {
         final var limit = findLimit.execute(account, balance);
 
         log.info("Save limit to account {}, limit {}", account, limit);
         limitSave.save(limit);
+        setLimitCache.addLimitToCache(limit);
         return limit;
     }
 }

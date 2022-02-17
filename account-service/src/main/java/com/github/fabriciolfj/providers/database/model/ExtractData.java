@@ -1,5 +1,6 @@
 package com.github.fabriciolfj.providers.database.model;
 
+import io.quarkus.hibernate.reactive.panache.PanacheEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,11 +16,8 @@ import java.time.LocalDateTime;
 @Builder
 @Entity
 @Table(name = "extrato")
-public class ExtractData {
+public class ExtractData extends PanacheEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String code;
     private BigDecimal entrance;
     private BigDecimal exit;
