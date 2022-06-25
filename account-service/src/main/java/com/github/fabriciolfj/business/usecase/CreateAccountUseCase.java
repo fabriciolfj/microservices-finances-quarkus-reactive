@@ -4,10 +4,12 @@ import com.github.fabriciolfj.business.CreateAccount;
 import com.github.fabriciolfj.business.CreateLimit;
 import com.github.fabriciolfj.entities.AccountEntity;
 import io.smallrye.mutiny.Uni;
+import io.smallrye.mutiny.infrastructure.Infrastructure;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.enterprise.context.ApplicationScoped;
+import java.time.Duration;
 
 @Slf4j
 @ApplicationScoped
@@ -22,6 +24,7 @@ public class CreateAccountUseCase {
         return createAccount.execute(accountEntity)
                 .onItem()
                 .invoke(c -> createLimit.create(c.getCode(), c.getBalance()))
+                .runSubscriptionOn(Infrastructure.getDefaultExecutor())
                 .onItem()
                 .transform(c -> c.getCode());
     }
