@@ -29,19 +29,19 @@ public class AccountController {
     @POST
     public Uni<AccountCreateResponse> createAccount(final AccountCreateRequestDTO dto) {
         return Uni.createFrom().item(AccountRequestConverter.toEntity(dto))
-                .onItem().transform(entity -> useCase.execute(entity))
-                .flatMap(uni -> uni.onItem().transform(value -> new AccountCreateResponse(value)));
+                .onItem().transform(useCase::execute)
+                .flatMap(uni -> uni.onItem().transform(AccountCreateResponse::new));
     }
 
     @GET
     public Multi<AccountGetResponse> findAll() {
-        return getAllUseCase.execute().onItem().transform(v -> AccountResponseConverter.toDto(v));
+        return getAllUseCase.execute().onItem().transform(AccountResponseConverter::toDto);
     }
 
     @GET
     @Path("{code}")
     public Uni<AccountGetResponse> find(@PathParam("code") final String code) {
         return getAccountByCodeUseCase.execute(code)
-                .onItem().transform(value -> AccountResponseConverter.toDto(value));
+                .onItem().transform(AccountResponseConverter::toDto);
     }
 }
